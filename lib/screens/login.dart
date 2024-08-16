@@ -1,4 +1,5 @@
 import 'package:boardvote/components/fullscreen_view.dart';
+import 'package:boardvote/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                     child: Container(),
                   ),
                   RawMaterialButton(
-                    onPressed: () => throw Exception(),
+                    onPressed: () => AuthService().login(),
                     padding: const EdgeInsets.only(
                       left: 12,
                       bottom: 12,

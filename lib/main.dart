@@ -1,5 +1,5 @@
 import 'package:boardvote/firebase_options.dart';
-import 'package:boardvote/screens/login.dart';
+import 'package:boardvote/screens/router.dart';
 import 'package:boardvote/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LoginScreen(),
+      home: RouterPage(),
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
