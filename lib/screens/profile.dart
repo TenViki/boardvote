@@ -1,3 +1,4 @@
+import 'package:boardvote/components/bbg_integration.dart';
 import 'package:boardvote/components/user_header.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,11 @@ class ProfileScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: [UserHeader(user: user)],
+          children: [
+            UserHeader(user: user),
+            SizedBox(height: 16),
+            BbgIntegration(),
+          ],
         ),
       ),
     );
