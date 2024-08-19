@@ -15,6 +15,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   TextEditingController searchController = TextEditingController();
 
   @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final games = ref.watch(boardGamesServiceProvider);
     final gamesService = ref.read(boardGamesServiceProvider.notifier);

@@ -1,3 +1,4 @@
+import 'package:boardvote/screens/following.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,6 +6,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        AppBar(
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.people),
+              onPressed: () {
+                Navigator.of(context).push(openFriendsScreen());
+              },
+            ),
+          ],
+        )
+      ],
+    );
   }
 }
