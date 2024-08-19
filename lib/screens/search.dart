@@ -1,5 +1,6 @@
 import 'package:boardvote/screens/boardgame.dart';
 import 'package:boardvote/services/boardgame_service.dart';
+import 'package:boardvote/services/game_session_service.dart';
 import 'package:boardvote/services/userboards_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +23,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(gameSessionServiceProvider);
+    final gameSessionService = ref.read(gameSessionServiceProvider.notifier);
     final games = ref.watch(boardGamesServiceProvider);
     final gamesService = ref.read(boardGamesServiceProvider.notifier);
 
@@ -50,8 +53,23 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 itemCount: games.length,
                 itemBuilder: (context, index) {
                   final game = games[index];
+                  final isGameInSession =
+                      gameSessionService.isGameInSession(game.objectId);
+
                   return ListTile(
                     title: Text(game.name),
+                    trailing: IconButton(
+                      onPressed: () {
+                        if (isGameInSession) {
+                          gameSessionService.removeGameFromSession(game);
+                        } else {
+                          gameSessionService.addGameToSession(game);
+                        }
+                      },
+                      icon: isGameInSession
+                          ? const Icon(Icons.check)
+                          : const Icon(Icons.add),
+                    ),
                     // subtitle: Text(game.),
                     onTap: () => Navigator.of(context)
                         .push(openBoardDetails(game.objectId)),

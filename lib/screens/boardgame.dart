@@ -1,4 +1,6 @@
+import 'package:boardvote/models/boardgame.dart';
 import 'package:boardvote/services/boardgame_service.dart';
+import 'package:boardvote/services/game_session_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:html_unescape/html_unescape.dart";
@@ -92,8 +94,10 @@ class BoardgameScreen extends ConsumerWidget {
                       "${HtmlUnescape().convert(value.description)}Published in ${value.yearPublished}"),
                 ),
               ),
-              const SliverToBoxAdapter(
-                child: AddToGamingSession(),
+              SliverToBoxAdapter(
+                child: AddToGamingSession(
+                  game: value,
+                ),
               ),
               if (value.relatedLinks.isNotEmpty)
                 const SliverToBoxAdapter(
@@ -171,23 +175,51 @@ class GameOverview extends StatelessWidget {
   }
 }
 
-class AddToGamingSession extends StatelessWidget {
-  const AddToGamingSession({super.key});
+class AddToGamingSession extends ConsumerWidget {
+  final BoardGame game;
+  const AddToGamingSession({super.key, required this.game});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(gameSessionServiceProvider);
+    final gameSessionService = ref.watch(gameSessionServiceProvider.notifier);
+    final isAdded = gameSessionService.isGameInSession(game.objectId);
+
+    print("Is game added to session? $isAdded");
+
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16),
       child: RawMaterialButton(
-        onPressed: () {},
+        onPressed: () {
+          final game = BoardGameLow(
+            objectId: this.game.objectId,
+            name: this.game.name,
+            image: this.game.image,
+            subtype: "boardgame",
+            thumbnail: this.game.thumbnail,
+            yearPublished: this.game.yearPublished,
+          );
+
+          if (isAdded) {
+            gameSessionService.removeGameFromSession(game);
+          } else {
+            gameSessionService.addGameToSession(game);
+          }
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        fillColor: Theme.of(context).colorScheme.primaryContainer,
+        fillColor: isAdded
+            ? Theme.of(context).colorScheme.secondaryContainer
+            : Theme.of(context).colorScheme.primaryContainer,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text("Add to gaming session",
-              style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+          child: Text(
+              isAdded ? "Remove from gaming session" : "Add to gaming session",
+              style: TextStyle(
+                  color: isAdded
+                      ? Theme.of(context).colorScheme.secondary
+                      : Theme.of(context).colorScheme.primary)),
         ),
       ),
     );

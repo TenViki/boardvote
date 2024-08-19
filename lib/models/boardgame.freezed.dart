@@ -273,9 +273,11 @@ abstract class _BoardGameLow implements BoardGameLow {
 
 /// @nodoc
 mixin _$BoardGame {
+  String get objectId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  String get thumbnail => throw _privateConstructorUsedError;
   String get minplayers => throw _privateConstructorUsedError;
   String get maxplayers => throw _privateConstructorUsedError;
   String get yearPublished => throw _privateConstructorUsedError;
@@ -296,9 +298,11 @@ abstract class $BoardGameCopyWith<$Res> {
       _$BoardGameCopyWithImpl<$Res, BoardGame>;
   @useResult
   $Res call(
-      {String name,
+      {String objectId,
+      String name,
       String description,
       String image,
+      String thumbnail,
       String minplayers,
       String maxplayers,
       String yearPublished,
@@ -322,9 +326,11 @@ class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? objectId = null,
     Object? name = null,
     Object? description = null,
     Object? image = null,
+    Object? thumbnail = null,
     Object? minplayers = null,
     Object? maxplayers = null,
     Object? yearPublished = null,
@@ -333,6 +339,10 @@ class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
     Object? relatedLinks = null,
   }) {
     return _then(_value.copyWith(
+      objectId: null == objectId
+          ? _value.objectId
+          : objectId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -344,6 +354,10 @@ class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       minplayers: null == minplayers
           ? _value.minplayers
@@ -382,9 +396,11 @@ abstract class _$$BoardGameImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
+      {String objectId,
+      String name,
       String description,
       String image,
+      String thumbnail,
       String minplayers,
       String maxplayers,
       String yearPublished,
@@ -406,9 +422,11 @@ class __$$BoardGameImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? objectId = null,
     Object? name = null,
     Object? description = null,
     Object? image = null,
+    Object? thumbnail = null,
     Object? minplayers = null,
     Object? maxplayers = null,
     Object? yearPublished = null,
@@ -417,6 +435,10 @@ class __$$BoardGameImplCopyWithImpl<$Res>
     Object? relatedLinks = null,
   }) {
     return _then(_$BoardGameImpl(
+      objectId: null == objectId
+          ? _value.objectId
+          : objectId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -428,6 +450,10 @@ class __$$BoardGameImplCopyWithImpl<$Res>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      thumbnail: null == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
       minplayers: null == minplayers
           ? _value.minplayers
@@ -461,9 +487,11 @@ class __$$BoardGameImplCopyWithImpl<$Res>
 
 class _$BoardGameImpl implements _BoardGame {
   const _$BoardGameImpl(
-      {required this.name,
+      {required this.objectId,
+      required this.name,
       required this.description,
       required this.image,
+      required this.thumbnail,
       required this.minplayers,
       required this.maxplayers,
       required this.yearPublished,
@@ -473,11 +501,15 @@ class _$BoardGameImpl implements _BoardGame {
       : _relatedLinks = relatedLinks;
 
   @override
+  final String objectId;
+  @override
   final String name;
   @override
   final String description;
   @override
   final String image;
+  @override
+  final String thumbnail;
   @override
   final String minplayers;
   @override
@@ -498,7 +530,7 @@ class _$BoardGameImpl implements _BoardGame {
 
   @override
   String toString() {
-    return 'BoardGame(name: $name, description: $description, image: $image, minplayers: $minplayers, maxplayers: $maxplayers, yearPublished: $yearPublished, playingTime: $playingTime, minAge: $minAge, relatedLinks: $relatedLinks)';
+    return 'BoardGame(objectId: $objectId, name: $name, description: $description, image: $image, thumbnail: $thumbnail, minplayers: $minplayers, maxplayers: $maxplayers, yearPublished: $yearPublished, playingTime: $playingTime, minAge: $minAge, relatedLinks: $relatedLinks)';
   }
 
   @override
@@ -506,10 +538,14 @@ class _$BoardGameImpl implements _BoardGame {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BoardGameImpl &&
+            (identical(other.objectId, objectId) ||
+                other.objectId == objectId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.thumbnail, thumbnail) ||
+                other.thumbnail == thumbnail) &&
             (identical(other.minplayers, minplayers) ||
                 other.minplayers == minplayers) &&
             (identical(other.maxplayers, maxplayers) ||
@@ -526,9 +562,11 @@ class _$BoardGameImpl implements _BoardGame {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      objectId,
       name,
       description,
       image,
+      thumbnail,
       minplayers,
       maxplayers,
       yearPublished,
@@ -547,9 +585,11 @@ class _$BoardGameImpl implements _BoardGame {
 
 abstract class _BoardGame implements BoardGame {
   const factory _BoardGame(
-      {required final String name,
+      {required final String objectId,
+      required final String name,
       required final String description,
       required final String image,
+      required final String thumbnail,
       required final String minplayers,
       required final String maxplayers,
       required final String yearPublished,
@@ -558,11 +598,15 @@ abstract class _BoardGame implements BoardGame {
       required final List<RelatedLink> relatedLinks}) = _$BoardGameImpl;
 
   @override
+  String get objectId;
+  @override
   String get name;
   @override
   String get description;
   @override
   String get image;
+  @override
+  String get thumbnail;
   @override
   String get minplayers;
   @override

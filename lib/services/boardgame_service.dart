@@ -25,6 +25,10 @@ Future<BoardGame> fetchBoardgameData(Ref ref, String objectId) async {
   final description = boardDocument.getElement("description")!.innerText;
   final image = boardDocument.getElement("image")?.innerText ??
       "https://images.unsplash.com/photo-1457694716743-eb419114c894?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+  final thumbnail = boardDocument.getElement("thumbnail")?.innerText ??
+      "https://images.unsplash.com/photo-1457694716743-eb419114c894?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
   final minplayers =
       boardDocument.getElement("minplayers")!.getAttribute("value");
   final maxplayers =
@@ -53,12 +57,14 @@ Future<BoardGame> fetchBoardgameData(Ref ref, String objectId) async {
     name: name!,
     description: description,
     image: image,
+    thumbnail: thumbnail,
     minplayers: minplayers!,
     maxplayers: maxplayers!,
     yearPublished: yearPublished!,
     relatedLinks: relatedLinks,
     playingTime: playingTime!,
     minAge: minAge!,
+    objectId: objectId,
   );
 }
 

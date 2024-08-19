@@ -33,9 +33,11 @@ class BoardGameLow with _$BoardGameLow {
 @freezed
 class BoardGame with _$BoardGame {
   const factory BoardGame({
+    required String objectId,
     required String name,
     required String description,
     required String image,
+    required String thumbnail,
     required String minplayers,
     required String maxplayers,
     required String yearPublished,

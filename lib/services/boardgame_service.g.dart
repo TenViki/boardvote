@@ -7,7 +7,7 @@ part of 'boardgame_service.dart';
 // **************************************************************************
 
 String _$fetchBoardgameDataHash() =>
-    r'180da8e78de78191fb7d05b9fea722e6445a7027';
+    r'815725fdc3c8eaf8b774cbcb971b8bee62949f7d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -157,7 +157,7 @@ class _FetchBoardgameDataProviderElement
   String get objectId => (origin as FetchBoardgameDataProvider).objectId;
 }
 
-String _$boardGamesServiceHash() => r'1804d87f363af4439272bdf2b48f0bb41c9ec80f';
+String _$boardGamesServiceHash() => r'a467b0f8a1f2dfac457323a8cb832c11798b0b58';
 
 /// See also [BoardGamesService].
 @ProviderFor(BoardGamesService)
