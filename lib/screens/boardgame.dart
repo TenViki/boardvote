@@ -15,7 +15,7 @@ class BoardgameScreen extends ConsumerWidget {
     return Scaffold(
       body: switch (asyncValue) {
         AsyncError(error: var error, stackTrace: var stackTrace) =>
-          Text('Error: $error'),
+          SafeArea(child: Text('Error: $error \n $stackTrace')),
         AsyncData(value: var value) => CustomScrollView(
             slivers: [
               SliverAppBar(

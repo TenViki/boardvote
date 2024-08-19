@@ -7,7 +7,7 @@ part of 'boardgame_service.dart';
 // **************************************************************************
 
 String _$fetchBoardgameDataHash() =>
-    r'd88b990a5e580dd326fed226405f2933d554da4a';
+    r'180da8e78de78191fb7d05b9fea722e6445a7027';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -156,5 +156,22 @@ class _FetchBoardgameDataProviderElement
   @override
   String get objectId => (origin as FetchBoardgameDataProvider).objectId;
 }
+
+String _$boardGamesServiceHash() => r'1804d87f363af4439272bdf2b48f0bb41c9ec80f';
+
+/// See also [BoardGamesService].
+@ProviderFor(BoardGamesService)
+final boardGamesServiceProvider =
+    AutoDisposeNotifierProvider<BoardGamesService, BoardsState>.internal(
+  BoardGamesService.new,
+  name: r'boardGamesServiceProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$boardGamesServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$BoardGamesService = AutoDisposeNotifier<BoardsState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

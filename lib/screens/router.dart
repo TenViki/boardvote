@@ -1,7 +1,7 @@
-import 'package:boardvote/screens/friends.dart';
 import 'package:boardvote/screens/home.dart';
 import 'package:boardvote/screens/login.dart';
 import 'package:boardvote/screens/profile.dart';
+import 'package:boardvote/screens/search.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class _RouterPageState extends State<RouterPage> {
               index: _selectedIndex,
               children: const [
                 HomeScreen(),
-                FriendsScreen(),
+                SearchScreen(),
                 ProfileScreen(),
               ],
             ),
@@ -43,7 +43,9 @@ class _RouterPageState extends State<RouterPage> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.people), label: 'Friends'),
+                    icon: Icon(Icons.search), label: 'Search'),
+                // BottomNavigationBarItem(
+                //     icon: Icon(Icons.people), label: 'Friends'),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: 'Profile',
