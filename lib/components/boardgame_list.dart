@@ -3,7 +3,7 @@ import 'package:boardvote/models/boardgame.dart';
 import 'package:flutter/material.dart';
 
 class BoardGameList extends StatelessWidget {
-  final List<BoardGame> boardGames;
+  final List<BoardGameLow> boardGames;
   const BoardGameList({super.key, required this.boardGames});
 
   @override

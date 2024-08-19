@@ -6,8 +6,8 @@ part of 'boardgame.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BoardGameImpl _$$BoardGameImplFromJson(Map<String, dynamic> json) =>
-    _$BoardGameImpl(
+_$BoardGameLowImpl _$$BoardGameLowImplFromJson(Map<String, dynamic> json) =>
+    _$BoardGameLowImpl(
       name: json['name'] as String,
       yearPublished: json['yearPublished'] as String,
       thumbnail: json['thumbnail'] as String,
@@ -16,7 +16,7 @@ _$BoardGameImpl _$$BoardGameImplFromJson(Map<String, dynamic> json) =>
       subtype: json['subtype'] as String,
     );
 
-Map<String, dynamic> _$$BoardGameImplToJson(_$BoardGameImpl instance) =>
+Map<String, dynamic> _$$BoardGameLowImplToJson(_$BoardGameLowImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'yearPublished': instance.yearPublished,

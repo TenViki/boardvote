@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'board_service.dart';
+part of 'userboards_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$boardServiceHash() => r'5eb53d20d09ab5395c5df31826bd747e4c21feef';
+String _$boardServiceHash() => r'7e8c74b2c5aa2896f334b6097d29e2dd2bbb72c7';
 
 /// See also [BoardService].
 @ProviderFor(BoardService)

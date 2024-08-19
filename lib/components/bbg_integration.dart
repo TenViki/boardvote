@@ -1,4 +1,4 @@
-import 'package:boardvote/services/board_service.dart';
+import 'package:boardvote/services/userboards_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';

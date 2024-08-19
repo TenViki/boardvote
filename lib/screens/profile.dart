@@ -1,7 +1,7 @@
 import 'package:boardvote/components/bbg_integration.dart';
 import 'package:boardvote/components/boardgame_list.dart';
 import 'package:boardvote/components/user_header.dart';
-import 'package:boardvote/services/board_service.dart';
+import 'package:boardvote/services/userboards_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

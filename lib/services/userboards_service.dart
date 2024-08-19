@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:xml/xml.dart";
 
-part "board_service.g.dart";
+part "userboards_service.g.dart";
 
 sealed class BoardsState {}
 
@@ -13,7 +13,7 @@ class BoardsInitial extends BoardsState {}
 class BoardsLoading extends BoardsState {}
 
 class BoardsLoaded extends BoardsState {
-  final List<BoardGame> games;
+  final List<BoardGameLow> games;
   BoardsLoaded(this.games);
 }
 
@@ -63,7 +63,7 @@ class BoardService extends _$BoardService {
 
       print("Board games: $boardgamesList");
       final parsed = boardgamesList
-          .map((e) => BoardGame.fromJson(e as Map<String, dynamic>))
+          .map((e) => BoardGameLow.fromJson(e as Map<String, dynamic>))
           .toList();
 
       print(parsed);
@@ -91,7 +91,7 @@ class BoardService extends _$BoardService {
       await Future.delayed(Duration(seconds: 20));
     }
 
-    final List<BoardGame> boardGames = [];
+    final List<BoardGameLow> boardGames = [];
 
     final xml = XmlDocument.parse(data);
     xml.findAllElements("item").forEach((element) {
@@ -103,7 +103,7 @@ class BoardService extends _$BoardService {
       final objectId = element.getAttribute("objectid") ?? "";
       final subtype = element.getAttribute("subtype") ?? "";
 
-      final boardGame = BoardGame(
+      final boardGame = BoardGameLow(
         name: name,
         yearPublished: yearPublished,
         thumbnail: thumbnail,

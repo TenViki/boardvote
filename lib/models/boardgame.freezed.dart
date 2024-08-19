@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-BoardGame _$BoardGameFromJson(Map<String, dynamic> json) {
-  return _BoardGame.fromJson(json);
+BoardGameLow _$BoardGameLowFromJson(Map<String, dynamic> json) {
+  return _BoardGameLow.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BoardGame {
+mixin _$BoardGameLow {
   String get name => throw _privateConstructorUsedError;
   String get yearPublished => throw _privateConstructorUsedError;
   String get thumbnail => throw _privateConstructorUsedError;
@@ -27,20 +27,21 @@ mixin _$BoardGame {
   String get objectId => throw _privateConstructorUsedError;
   String get subtype => throw _privateConstructorUsedError;
 
-  /// Serializes this BoardGame to a JSON map.
+  /// Serializes this BoardGameLow to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of BoardGame
+  /// Create a copy of BoardGameLow
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BoardGameCopyWith<BoardGame> get copyWith =>
+  $BoardGameLowCopyWith<BoardGameLow> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BoardGameCopyWith<$Res> {
-  factory $BoardGameCopyWith(BoardGame value, $Res Function(BoardGame) then) =
-      _$BoardGameCopyWithImpl<$Res, BoardGame>;
+abstract class $BoardGameLowCopyWith<$Res> {
+  factory $BoardGameLowCopyWith(
+          BoardGameLow value, $Res Function(BoardGameLow) then) =
+      _$BoardGameLowCopyWithImpl<$Res, BoardGameLow>;
   @useResult
   $Res call(
       {String name,
@@ -52,16 +53,16 @@ abstract class $BoardGameCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
-    implements $BoardGameCopyWith<$Res> {
-  _$BoardGameCopyWithImpl(this._value, this._then);
+class _$BoardGameLowCopyWithImpl<$Res, $Val extends BoardGameLow>
+    implements $BoardGameLowCopyWith<$Res> {
+  _$BoardGameLowCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BoardGame
+  /// Create a copy of BoardGameLow
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -103,11 +104,11 @@ class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
 }
 
 /// @nodoc
-abstract class _$$BoardGameImplCopyWith<$Res>
-    implements $BoardGameCopyWith<$Res> {
-  factory _$$BoardGameImplCopyWith(
-          _$BoardGameImpl value, $Res Function(_$BoardGameImpl) then) =
-      __$$BoardGameImplCopyWithImpl<$Res>;
+abstract class _$$BoardGameLowImplCopyWith<$Res>
+    implements $BoardGameLowCopyWith<$Res> {
+  factory _$$BoardGameLowImplCopyWith(
+          _$BoardGameLowImpl value, $Res Function(_$BoardGameLowImpl) then) =
+      __$$BoardGameLowImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,14 +121,14 @@ abstract class _$$BoardGameImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BoardGameImplCopyWithImpl<$Res>
-    extends _$BoardGameCopyWithImpl<$Res, _$BoardGameImpl>
-    implements _$$BoardGameImplCopyWith<$Res> {
-  __$$BoardGameImplCopyWithImpl(
-      _$BoardGameImpl _value, $Res Function(_$BoardGameImpl) _then)
+class __$$BoardGameLowImplCopyWithImpl<$Res>
+    extends _$BoardGameLowCopyWithImpl<$Res, _$BoardGameLowImpl>
+    implements _$$BoardGameLowImplCopyWith<$Res> {
+  __$$BoardGameLowImplCopyWithImpl(
+      _$BoardGameLowImpl _value, $Res Function(_$BoardGameLowImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BoardGame
+  /// Create a copy of BoardGameLow
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -139,7 +140,7 @@ class __$$BoardGameImplCopyWithImpl<$Res>
     Object? objectId = null,
     Object? subtype = null,
   }) {
-    return _then(_$BoardGameImpl(
+    return _then(_$BoardGameLowImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -170,8 +171,8 @@ class __$$BoardGameImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BoardGameImpl implements _BoardGame {
-  const _$BoardGameImpl(
+class _$BoardGameLowImpl implements _BoardGameLow {
+  const _$BoardGameLowImpl(
       {required this.name,
       required this.yearPublished,
       required this.thumbnail,
@@ -179,8 +180,8 @@ class _$BoardGameImpl implements _BoardGame {
       required this.objectId,
       required this.subtype});
 
-  factory _$BoardGameImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BoardGameImplFromJson(json);
+  factory _$BoardGameLowImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BoardGameLowImplFromJson(json);
 
   @override
   final String name;
@@ -197,14 +198,14 @@ class _$BoardGameImpl implements _BoardGame {
 
   @override
   String toString() {
-    return 'BoardGame(name: $name, yearPublished: $yearPublished, thumbnail: $thumbnail, image: $image, objectId: $objectId, subtype: $subtype)';
+    return 'BoardGameLow(name: $name, yearPublished: $yearPublished, thumbnail: $thumbnail, image: $image, objectId: $objectId, subtype: $subtype)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BoardGameImpl &&
+            other is _$BoardGameLowImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.yearPublished, yearPublished) ||
                 other.yearPublished == yearPublished) &&
@@ -221,33 +222,33 @@ class _$BoardGameImpl implements _BoardGame {
   int get hashCode => Object.hash(
       runtimeType, name, yearPublished, thumbnail, image, objectId, subtype);
 
-  /// Create a copy of BoardGame
+  /// Create a copy of BoardGameLow
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BoardGameImplCopyWith<_$BoardGameImpl> get copyWith =>
-      __$$BoardGameImplCopyWithImpl<_$BoardGameImpl>(this, _$identity);
+  _$$BoardGameLowImplCopyWith<_$BoardGameLowImpl> get copyWith =>
+      __$$BoardGameLowImplCopyWithImpl<_$BoardGameLowImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BoardGameImplToJson(
+    return _$$BoardGameLowImplToJson(
       this,
     );
   }
 }
 
-abstract class _BoardGame implements BoardGame {
-  const factory _BoardGame(
+abstract class _BoardGameLow implements BoardGameLow {
+  const factory _BoardGameLow(
       {required final String name,
       required final String yearPublished,
       required final String thumbnail,
       required final String image,
       required final String objectId,
-      required final String subtype}) = _$BoardGameImpl;
+      required final String subtype}) = _$BoardGameLowImpl;
 
-  factory _BoardGame.fromJson(Map<String, dynamic> json) =
-      _$BoardGameImpl.fromJson;
+  factory _BoardGameLow.fromJson(Map<String, dynamic> json) =
+      _$BoardGameLowImpl.fromJson;
 
   @override
   String get name;
@@ -261,6 +262,319 @@ abstract class _BoardGame implements BoardGame {
   String get objectId;
   @override
   String get subtype;
+
+  /// Create a copy of BoardGameLow
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BoardGameLowImplCopyWith<_$BoardGameLowImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$BoardGame {
+  String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  String get minplayers => throw _privateConstructorUsedError;
+  String get maxplayers => throw _privateConstructorUsedError;
+  String get yearPublished => throw _privateConstructorUsedError;
+  String get playingTime => throw _privateConstructorUsedError;
+  String get minAge => throw _privateConstructorUsedError;
+  List<RelatedLink> get relatedLinks => throw _privateConstructorUsedError;
+
+  /// Create a copy of BoardGame
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $BoardGameCopyWith<BoardGame> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BoardGameCopyWith<$Res> {
+  factory $BoardGameCopyWith(BoardGame value, $Res Function(BoardGame) then) =
+      _$BoardGameCopyWithImpl<$Res, BoardGame>;
+  @useResult
+  $Res call(
+      {String name,
+      String description,
+      String image,
+      String minplayers,
+      String maxplayers,
+      String yearPublished,
+      String playingTime,
+      String minAge,
+      List<RelatedLink> relatedLinks});
+}
+
+/// @nodoc
+class _$BoardGameCopyWithImpl<$Res, $Val extends BoardGame>
+    implements $BoardGameCopyWith<$Res> {
+  _$BoardGameCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of BoardGame
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? description = null,
+    Object? image = null,
+    Object? minplayers = null,
+    Object? maxplayers = null,
+    Object? yearPublished = null,
+    Object? playingTime = null,
+    Object? minAge = null,
+    Object? relatedLinks = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      minplayers: null == minplayers
+          ? _value.minplayers
+          : minplayers // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxplayers: null == maxplayers
+          ? _value.maxplayers
+          : maxplayers // ignore: cast_nullable_to_non_nullable
+              as String,
+      yearPublished: null == yearPublished
+          ? _value.yearPublished
+          : yearPublished // ignore: cast_nullable_to_non_nullable
+              as String,
+      playingTime: null == playingTime
+          ? _value.playingTime
+          : playingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      minAge: null == minAge
+          ? _value.minAge
+          : minAge // ignore: cast_nullable_to_non_nullable
+              as String,
+      relatedLinks: null == relatedLinks
+          ? _value.relatedLinks
+          : relatedLinks // ignore: cast_nullable_to_non_nullable
+              as List<RelatedLink>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$BoardGameImplCopyWith<$Res>
+    implements $BoardGameCopyWith<$Res> {
+  factory _$$BoardGameImplCopyWith(
+          _$BoardGameImpl value, $Res Function(_$BoardGameImpl) then) =
+      __$$BoardGameImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      String description,
+      String image,
+      String minplayers,
+      String maxplayers,
+      String yearPublished,
+      String playingTime,
+      String minAge,
+      List<RelatedLink> relatedLinks});
+}
+
+/// @nodoc
+class __$$BoardGameImplCopyWithImpl<$Res>
+    extends _$BoardGameCopyWithImpl<$Res, _$BoardGameImpl>
+    implements _$$BoardGameImplCopyWith<$Res> {
+  __$$BoardGameImplCopyWithImpl(
+      _$BoardGameImpl _value, $Res Function(_$BoardGameImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BoardGame
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? description = null,
+    Object? image = null,
+    Object? minplayers = null,
+    Object? maxplayers = null,
+    Object? yearPublished = null,
+    Object? playingTime = null,
+    Object? minAge = null,
+    Object? relatedLinks = null,
+  }) {
+    return _then(_$BoardGameImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      minplayers: null == minplayers
+          ? _value.minplayers
+          : minplayers // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxplayers: null == maxplayers
+          ? _value.maxplayers
+          : maxplayers // ignore: cast_nullable_to_non_nullable
+              as String,
+      yearPublished: null == yearPublished
+          ? _value.yearPublished
+          : yearPublished // ignore: cast_nullable_to_non_nullable
+              as String,
+      playingTime: null == playingTime
+          ? _value.playingTime
+          : playingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      minAge: null == minAge
+          ? _value.minAge
+          : minAge // ignore: cast_nullable_to_non_nullable
+              as String,
+      relatedLinks: null == relatedLinks
+          ? _value._relatedLinks
+          : relatedLinks // ignore: cast_nullable_to_non_nullable
+              as List<RelatedLink>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BoardGameImpl implements _BoardGame {
+  const _$BoardGameImpl(
+      {required this.name,
+      required this.description,
+      required this.image,
+      required this.minplayers,
+      required this.maxplayers,
+      required this.yearPublished,
+      required this.playingTime,
+      required this.minAge,
+      required final List<RelatedLink> relatedLinks})
+      : _relatedLinks = relatedLinks;
+
+  @override
+  final String name;
+  @override
+  final String description;
+  @override
+  final String image;
+  @override
+  final String minplayers;
+  @override
+  final String maxplayers;
+  @override
+  final String yearPublished;
+  @override
+  final String playingTime;
+  @override
+  final String minAge;
+  final List<RelatedLink> _relatedLinks;
+  @override
+  List<RelatedLink> get relatedLinks {
+    if (_relatedLinks is EqualUnmodifiableListView) return _relatedLinks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_relatedLinks);
+  }
+
+  @override
+  String toString() {
+    return 'BoardGame(name: $name, description: $description, image: $image, minplayers: $minplayers, maxplayers: $maxplayers, yearPublished: $yearPublished, playingTime: $playingTime, minAge: $minAge, relatedLinks: $relatedLinks)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BoardGameImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.minplayers, minplayers) ||
+                other.minplayers == minplayers) &&
+            (identical(other.maxplayers, maxplayers) ||
+                other.maxplayers == maxplayers) &&
+            (identical(other.yearPublished, yearPublished) ||
+                other.yearPublished == yearPublished) &&
+            (identical(other.playingTime, playingTime) ||
+                other.playingTime == playingTime) &&
+            (identical(other.minAge, minAge) || other.minAge == minAge) &&
+            const DeepCollectionEquality()
+                .equals(other._relatedLinks, _relatedLinks));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      description,
+      image,
+      minplayers,
+      maxplayers,
+      yearPublished,
+      playingTime,
+      minAge,
+      const DeepCollectionEquality().hash(_relatedLinks));
+
+  /// Create a copy of BoardGame
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BoardGameImplCopyWith<_$BoardGameImpl> get copyWith =>
+      __$$BoardGameImplCopyWithImpl<_$BoardGameImpl>(this, _$identity);
+}
+
+abstract class _BoardGame implements BoardGame {
+  const factory _BoardGame(
+      {required final String name,
+      required final String description,
+      required final String image,
+      required final String minplayers,
+      required final String maxplayers,
+      required final String yearPublished,
+      required final String playingTime,
+      required final String minAge,
+      required final List<RelatedLink> relatedLinks}) = _$BoardGameImpl;
+
+  @override
+  String get name;
+  @override
+  String get description;
+  @override
+  String get image;
+  @override
+  String get minplayers;
+  @override
+  String get maxplayers;
+  @override
+  String get yearPublished;
+  @override
+  String get playingTime;
+  @override
+  String get minAge;
+  @override
+  List<RelatedLink> get relatedLinks;
 
   /// Create a copy of BoardGame
   /// with the given fields replaced by the non-null parameter values.
