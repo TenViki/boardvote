@@ -1,7 +1,9 @@
+import 'package:boardvote/services/board_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import "package:flutter_riverpod/flutter_riverpod.dart";
 
 class BbgIntegration extends StatelessWidget {
   const BbgIntegration({super.key});
@@ -30,20 +32,29 @@ class BbgIntegration extends StatelessWidget {
   }
 }
 
-class BbgIntegrationForm extends StatefulWidget {
+class BbgIntegrationForm extends ConsumerStatefulWidget {
   final String? username;
   final String? collectionId;
   const BbgIntegrationForm({super.key, this.username, this.collectionId});
 
   @override
-  State<BbgIntegrationForm> createState() => _BbgIntegrationFormState();
+  ConsumerState<BbgIntegrationForm> createState() => _BbgIntegrationFormState();
 }
 
-class _BbgIntegrationFormState extends State<BbgIntegrationForm> {
+class _BbgIntegrationFormState extends ConsumerState<BbgIntegrationForm> {
   TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
+    final boardService = ref.read(boardServiceProvider.notifier);
+
+    Future.delayed(Duration.zero, () {
+      if (widget.username != null) {
+        boardService
+            .getBoardgamesForUser(FirebaseAuth.instance.currentUser!.uid);
+      }
+    });
+
     // TODO: implement initState
     controller.text = widget.username ?? "";
     super.initState();
@@ -51,6 +62,9 @@ class _BbgIntegrationFormState extends State<BbgIntegrationForm> {
 
   @override
   Widget build(BuildContext context) {
+    final boardState = ref.watch(boardServiceProvider);
+    final boardService = ref.read(boardServiceProvider.notifier);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -86,8 +100,13 @@ class _BbgIntegrationFormState extends State<BbgIntegrationForm> {
                 content: Text("Username saved!"),
               ),
             );
+
+            // sync the collection
+            boardService.syncCollection(controller.text);
           },
-          child: Text("Sync"),
+          child: boardState is BoardsLoading
+              ? CircularProgressIndicator()
+              : Text("Save"),
         ),
       ],
     );
