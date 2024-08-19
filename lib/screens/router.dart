@@ -1,3 +1,4 @@
+import 'package:boardvote/screens/friends.dart';
 import 'package:boardvote/screens/home.dart';
 import 'package:boardvote/screens/login.dart';
 import 'package:boardvote/screens/profile.dart';
@@ -29,6 +30,7 @@ class _RouterPageState extends State<RouterPage> {
               index: _selectedIndex,
               children: const [
                 HomeScreen(),
+                FriendsScreen(),
                 ProfileScreen(),
               ],
             ),
@@ -40,6 +42,8 @@ class _RouterPageState extends State<RouterPage> {
                   icon: Icon(Icons.home),
                   label: 'Home',
                 ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.people), label: 'Friends'),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: 'Profile',

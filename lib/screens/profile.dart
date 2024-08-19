@@ -16,24 +16,25 @@ class ProfileScreen extends ConsumerWidget {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return Container();
 
-    print("Board games tu: PLS PLS PLS $boardGames");
-
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             UserHeader(user: user),
-            SizedBox(height: 16),
-            BbgIntegration(),
+            const SizedBox(height: 16),
+            const BbgIntegration(),
 
             // profile list of boardgames
 
             Expanded(
               child: Container(
                 child: switch (boardGames) {
-                  BoardsInitial() => Text("No boardgames found"),
-                  BoardsLoading() => Center(child: CircularProgressIndicator()),
+                  BoardsInitial() => const Center(
+                      child: Text("No boardgames found"),
+                    ),
+                  BoardsLoading() =>
+                    const Center(child: CircularProgressIndicator()),
                   BoardsError(message: var message) => Text(message),
                   BoardsLoaded(games: var games) =>
                     BoardGameList(boardGames: games),

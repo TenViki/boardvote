@@ -13,10 +13,13 @@ class BoardGameTile extends StatelessWidget {
         height: 50,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            boardGame.thumbnail,
-            // width: 50,
-            // height: 50,
+          child: Container(
+            color: Theme.of(context).colorScheme.surfaceContainerHigh,
+            child: Image.network(
+              boardGame.thumbnail,
+              // width: 50,
+              // height: 50,
+            ),
           ),
         ),
       ),
