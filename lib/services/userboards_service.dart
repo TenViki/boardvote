@@ -93,7 +93,7 @@ class BoardService extends _$BoardService {
 
     final List<BoardGameLow> boardGames = [];
 
-    final xml = XmlDocument.parse(data);
+    final xml = XmlDocument.parse(data!);
     xml.findAllElements("item").forEach((element) {
       final name = element.getElement("name")?.innerText ?? "";
       final yearPublished =

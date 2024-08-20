@@ -1,4 +1,6 @@
+import 'package:animations/animations.dart';
 import 'package:boardvote/screens/boardgame.dart';
+import 'package:boardvote/screens/search.dart';
 import 'package:boardvote/services/game_session_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,6 +27,7 @@ class GameSessionScreen extends ConsumerWidget {
           ),
         ],
       ),
+      floatingActionButton: _OpenContainerWrapper(),
       body: gameSession.games.isNotEmpty
           ? ListView.builder(
               itemCount: gameSession.games.length,
@@ -50,4 +53,34 @@ class GameSessionScreen extends ConsumerWidget {
 
 Route openGameSession() {
   return MaterialPageRoute(builder: (context) => const GameSessionScreen());
+}
+
+class _OpenContainerWrapper extends StatelessWidget {
+  const _OpenContainerWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return OpenContainer(
+      openBuilder: (context, closedContainer) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text("Add boardgames"),
+          ),
+          body: const SearchScreen(),
+        );
+      },
+      openColor: theme.cardColor,
+      closedShape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+      ),
+      transitionType: ContainerTransitionType.fadeThrough,
+      closedElevation: 0,
+      closedColor: Colors.transparent,
+      closedBuilder: (context, openContainer) {
+        return FloatingActionButton(
+            onPressed: openContainer, child: Icon(Icons.add));
+      },
+    );
+  }
 }

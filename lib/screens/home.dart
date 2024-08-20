@@ -75,10 +75,10 @@ class _OpenContainerWrapper extends StatelessWidget {
       },
       openColor: theme.cardColor,
       closedShape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(0)),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       closedElevation: 0,
-      closedColor: theme.cardColor,
+      closedColor: Colors.transparent,
       closedBuilder: (context, openContainer) {
         return IconButton(
           onPressed: openContainer,
