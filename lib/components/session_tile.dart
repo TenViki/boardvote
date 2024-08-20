@@ -32,7 +32,8 @@ class SessionTile extends StatelessWidget {
                 Expanded(child: Text(session.publisherName)),
 
                 // format date from timestamp
-                Text(DateFormat.yMMMd().format(DateTime.now()))
+                Text(DateFormat.yMMMd().format(
+                    DateTime.fromMillisecondsSinceEpoch(session.timestamp)))
               ],
             ),
             const SizedBox(height: 8),
