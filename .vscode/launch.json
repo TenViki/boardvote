@@ -13,7 +13,7 @@
       "name": "Android",
       "request": "launch",
       "type": "dart",
-      "deviceId": "192.168.1.227:40997"
+      "deviceId": "192.168.1.227:38801"
     },
     {
       "name": "Web",

@@ -1,4 +1,3 @@
-import 'package:boardvote/models/boardgame.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'session.freezed.dart';

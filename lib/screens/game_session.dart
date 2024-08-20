@@ -13,16 +13,19 @@ class GameSessionScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        // ignore: prefer_const_constructors
         title: Text("Current Game Session"),
         actions: [
           IconButton(
             tooltip: "Publish Game Session for your followers to join",
-            onPressed: () => gameSessionService.publishSession(),
+            onPressed: gameSession.games.isNotEmpty
+                ? () => gameSessionService.publishSession()
+                : null,
             icon: const Icon(Icons.published_with_changes),
           ),
         ],
       ),
-      body: gameSession.games.length > 0
+      body: gameSession.games.isNotEmpty
           ? ListView.builder(
               itemCount: gameSession.games.length,
               itemBuilder: (context, index) {
