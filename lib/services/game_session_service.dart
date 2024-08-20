@@ -1,5 +1,7 @@
 import 'package:boardvote/models/boardgame.dart';
 import 'package:boardvote/services/userboards_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'game_session_service.g.dart';
@@ -26,6 +28,16 @@ class GameSessionService extends _$GameSessionService {
   }
 
   publishSession() {
-    // publish session to firebase
+    final user = FirebaseAuth.instance.currentUser;
+    // publish the session
+    FirebaseFirestore.instance.collection("sessions").add({
+      "games": state.games.map((g) => {"voters": [], ...g.toJson()}).toList(),
+      "timestamp": DateTime.now().millisecondsSinceEpoch,
+      "publisherEmail": user!.email,
+      "publisherName": user.displayName,
+      "publisherImage": user.photoURL,
+    });
+
+    clearSession();
   }
 }

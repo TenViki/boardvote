@@ -7,7 +7,7 @@ part of 'game_session_service.dart';
 // **************************************************************************
 
 String _$gameSessionServiceHash() =>
-    r'cd26278de4575d4178131b5ccf857de343edff6d';
+    r'6a69f6b35872eb3bee72561741180b1d462330e8';
 
 /// See also [GameSessionService].
 @ProviderFor(GameSessionService)

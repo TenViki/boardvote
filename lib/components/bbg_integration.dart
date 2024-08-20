@@ -96,7 +96,7 @@ class _BbgIntegrationFormState extends ConsumerState<BbgIntegrationForm> {
 
             // show a snackbar
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                 content: Text("Username saved!"),
               ),
             );
