@@ -24,6 +24,10 @@ class Session with _$Session {
     required String publisherImage,
     required List<GameVoteObject> games,
     required int timestamp,
+    required String name,
+    required String location,
+    required String? notes,
+    required int? date,
   }) = _Session;
 
   factory Session.fromJson(Map<String, dynamic> json) =>

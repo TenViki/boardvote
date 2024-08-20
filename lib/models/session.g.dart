@@ -32,6 +32,10 @@ _$SessionImpl _$$SessionImplFromJson(Map<String, dynamic> json) =>
           .map((e) => GameVoteObject.fromJson(e as Map<String, dynamic>))
           .toList(),
       timestamp: (json['timestamp'] as num).toInt(),
+      name: json['name'] as String,
+      location: json['location'] as String,
+      notes: json['notes'] as String?,
+      date: (json['date'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
@@ -42,4 +46,8 @@ Map<String, dynamic> _$$SessionImplToJson(_$SessionImpl instance) =>
       'publisherImage': instance.publisherImage,
       'games': instance.games,
       'timestamp': instance.timestamp,
+      'name': instance.name,
+      'location': instance.location,
+      'notes': instance.notes,
+      'date': instance.date,
     };

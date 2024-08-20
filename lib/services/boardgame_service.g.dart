@@ -157,7 +157,7 @@ class _FetchBoardgameDataProviderElement
   String get objectId => (origin as FetchBoardgameDataProvider).objectId;
 }
 
-String _$boardGamesServiceHash() => r'a467b0f8a1f2dfac457323a8cb832c11798b0b58';
+String _$boardGamesServiceHash() => r'67501c8dc50e430be98e95af6b662f8ce167c4d2';
 
 /// See also [BoardGamesService].
 @ProviderFor(BoardGamesService)

@@ -6,7 +6,7 @@ part of 'userboards_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$boardServiceHash() => r'7e8c74b2c5aa2896f334b6097d29e2dd2bbb72c7';
+String _$boardServiceHash() => r'58c7201ead4a87c6cd911394781b6cdb910a4360';
 
 /// See also [BoardService].
 @ProviderFor(BoardService)

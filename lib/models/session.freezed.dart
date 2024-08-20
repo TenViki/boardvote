@@ -222,6 +222,10 @@ mixin _$Session {
   String get publisherImage => throw _privateConstructorUsedError;
   List<GameVoteObject> get games => throw _privateConstructorUsedError;
   int get timestamp => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get location => throw _privateConstructorUsedError;
+  String? get notes => throw _privateConstructorUsedError;
+  int? get date => throw _privateConstructorUsedError;
 
   /// Serializes this Session to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -243,7 +247,11 @@ abstract class $SessionCopyWith<$Res> {
       String publisherName,
       String publisherImage,
       List<GameVoteObject> games,
-      int timestamp});
+      int timestamp,
+      String name,
+      String location,
+      String? notes,
+      int? date});
 }
 
 /// @nodoc
@@ -267,6 +275,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? publisherImage = null,
     Object? games = null,
     Object? timestamp = null,
+    Object? name = null,
+    Object? location = null,
+    Object? notes = freezed,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -293,6 +305,22 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      notes: freezed == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -310,7 +338,11 @@ abstract class _$$SessionImplCopyWith<$Res> implements $SessionCopyWith<$Res> {
       String publisherName,
       String publisherImage,
       List<GameVoteObject> games,
-      int timestamp});
+      int timestamp,
+      String name,
+      String location,
+      String? notes,
+      int? date});
 }
 
 /// @nodoc
@@ -332,6 +364,10 @@ class __$$SessionImplCopyWithImpl<$Res>
     Object? publisherImage = null,
     Object? games = null,
     Object? timestamp = null,
+    Object? name = null,
+    Object? location = null,
+    Object? notes = freezed,
+    Object? date = freezed,
   }) {
     return _then(_$SessionImpl(
       id: null == id
@@ -358,6 +394,22 @@ class __$$SessionImplCopyWithImpl<$Res>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      notes: freezed == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -371,7 +423,11 @@ class _$SessionImpl implements _Session {
       required this.publisherName,
       required this.publisherImage,
       required final List<GameVoteObject> games,
-      required this.timestamp})
+      required this.timestamp,
+      required this.name,
+      required this.location,
+      required this.notes,
+      required this.date})
       : _games = games;
 
   factory _$SessionImpl.fromJson(Map<String, dynamic> json) =>
@@ -395,10 +451,18 @@ class _$SessionImpl implements _Session {
 
   @override
   final int timestamp;
+  @override
+  final String name;
+  @override
+  final String location;
+  @override
+  final String? notes;
+  @override
+  final int? date;
 
   @override
   String toString() {
-    return 'Session(id: $id, publisherEmail: $publisherEmail, publisherName: $publisherName, publisherImage: $publisherImage, games: $games, timestamp: $timestamp)';
+    return 'Session(id: $id, publisherEmail: $publisherEmail, publisherName: $publisherName, publisherImage: $publisherImage, games: $games, timestamp: $timestamp, name: $name, location: $location, notes: $notes, date: $date)';
   }
 
   @override
@@ -415,7 +479,12 @@ class _$SessionImpl implements _Session {
                 other.publisherImage == publisherImage) &&
             const DeepCollectionEquality().equals(other._games, _games) &&
             (identical(other.timestamp, timestamp) ||
-                other.timestamp == timestamp));
+                other.timestamp == timestamp) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.notes, notes) || other.notes == notes) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -427,7 +496,11 @@ class _$SessionImpl implements _Session {
       publisherName,
       publisherImage,
       const DeepCollectionEquality().hash(_games),
-      timestamp);
+      timestamp,
+      name,
+      location,
+      notes,
+      date);
 
   /// Create a copy of Session
   /// with the given fields replaced by the non-null parameter values.
@@ -452,7 +525,11 @@ abstract class _Session implements Session {
       required final String publisherName,
       required final String publisherImage,
       required final List<GameVoteObject> games,
-      required final int timestamp}) = _$SessionImpl;
+      required final int timestamp,
+      required final String name,
+      required final String location,
+      required final String? notes,
+      required final int? date}) = _$SessionImpl;
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$SessionImpl.fromJson;
 
@@ -468,6 +545,14 @@ abstract class _Session implements Session {
   List<GameVoteObject> get games;
   @override
   int get timestamp;
+  @override
+  String get name;
+  @override
+  String get location;
+  @override
+  String? get notes;
+  @override
+  int? get date;
 
   /// Create a copy of Session
   /// with the given fields replaced by the non-null parameter values.
