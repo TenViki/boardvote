@@ -8,6 +8,16 @@ class SessionTile extends StatelessWidget {
   Session session;
   SessionTile({super.key, required this.session});
 
+  int _getMaxVotes() {
+    int maxVotes = 1;
+    for (var game in session.games) {
+      if (game.voters.length > maxVotes) {
+        maxVotes = game.voters.length;
+      }
+    }
+    return maxVotes;
+  }
+
   @override
   Widget build(BuildContext context) {
     print(session);
@@ -38,16 +48,38 @@ class SessionTile extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             for (var game in session.games)
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(game.name),
-                trailing: GameCounter(
-                    session: session,
-                    gameId: game.objectId,
-                    voters: game.voters),
-                onTap: () =>
-                    Navigator.of(context).push(openBoardDetails(game.objectId)),
-              ),
+              Stack(
+                children: [
+                  Positioned.fill(
+                    child: Container(
+                      child: AnimatedFractionallySizedBox(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOutCubic,
+                        alignment: Alignment.centerLeft,
+                        widthFactor: game.voters.length / _getMaxVotes(),
+                        heightFactor: .9,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    contentPadding: EdgeInsets.only(left: 16),
+                    title: Text(game.name),
+                    trailing: GameCounter(
+                        session: session,
+                        gameId: game.objectId,
+                        voters: game.voters),
+                    onTap: () => Navigator.of(context)
+                        .push(openBoardDetails(game.objectId)),
+                  ),
+                ],
+              )
           ],
         ),
       ),

@@ -19,9 +19,9 @@ class HomeScreen extends ConsumerWidget {
         AppBar(
           title: const Text("Boardvote"),
           actions: [
-            _OpenContainerWrapper(
-              icon: const Icon(Icons.gamepad),
-              openedChild: const GameSessionScreen(),
+            const _OpenContainerWrapper(
+              icon: Icon(Icons.gamepad),
+              openedChild: GameSessionScreen(),
             ),
             _OpenContainerWrapper(
               icon: const Icon(Icons.people),
