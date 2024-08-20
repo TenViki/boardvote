@@ -43,6 +43,7 @@ class HomeScreen extends ConsumerWidget {
                 ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
 
               return ListView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: sorted.length,
                   itemBuilder: (context, index) {
                     final item = sorted[index];
