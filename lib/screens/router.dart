@@ -4,6 +4,7 @@ import 'package:boardvote/screens/profile.dart';
 import 'package:boardvote/screens/search.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 class RouterPage extends StatefulWidget {
   const RouterPage({super.key});
@@ -26,7 +27,7 @@ class _RouterPageState extends State<RouterPage> {
 
         if (user != null) {
           return Scaffold(
-            body: IndexedStack(
+            body: FadeIndexedStack(
               index: _selectedIndex,
               children: const [
                 HomeScreen(),

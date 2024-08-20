@@ -1,3 +1,4 @@
+import "package:animations/animations.dart";
 import 'package:boardvote/components/session_tile.dart';
 import 'package:boardvote/models/session.dart';
 import 'package:boardvote/screens/following.dart';
@@ -5,8 +6,6 @@ import 'package:boardvote/screens/game_session.dart';
 import 'package:boardvote/services/feed_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../utils/routes.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -20,14 +19,13 @@ class HomeScreen extends ConsumerWidget {
         AppBar(
           title: const Text("Boardvote"),
           actions: [
-            IconButton(
-                onPressed: () => Navigator.of(context)
-                    .push(openScreenFromRight(const GameSessionScreen())),
-                icon: const Icon(Icons.gamepad)),
-            IconButton(
-              onPressed: () => Navigator.of(context)
-                  .push(openScreenFromRight(FollowingScreen())),
+            _OpenContainerWrapper(
+              icon: const Icon(Icons.gamepad),
+              openedChild: const GameSessionScreen(),
+            ),
+            _OpenContainerWrapper(
               icon: const Icon(Icons.people),
+              openedChild: FollowingScreen(),
             ),
           ],
         ),
@@ -54,6 +52,38 @@ class HomeScreen extends ConsumerWidget {
           _ => const Center(child: CircularProgressIndicator()),
         })
       ],
+    );
+  }
+}
+
+class _OpenContainerWrapper extends StatelessWidget {
+  const _OpenContainerWrapper({
+    required this.icon,
+    required this.openedChild,
+  });
+
+  final Widget icon;
+  final Widget openedChild;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return OpenContainer(
+      openBuilder: (context, closedContainer) {
+        return openedChild;
+      },
+      openColor: theme.cardColor,
+      closedShape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(0)),
+      ),
+      closedElevation: 0,
+      closedColor: theme.cardColor,
+      closedBuilder: (context, openContainer) {
+        return IconButton(
+          onPressed: openContainer,
+          icon: icon,
+        );
+      },
     );
   }
 }

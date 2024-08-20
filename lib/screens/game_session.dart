@@ -22,20 +22,25 @@ class GameSessionScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-          itemCount: gameSession.games.length,
-          itemBuilder: (context, index) {
-            final game = gameSession.games[index];
-            return ListTile(
-              title: Text(game.name),
-              trailing: IconButton(
-                onPressed: () => gameSessionService.removeGameFromSession(game),
-                icon: const Icon(Icons.delete),
-              ),
-              onTap: () =>
-                  Navigator.of(context).push(openBoardDetails(game.objectId)),
-            );
-          }),
+      body: gameSession.games.length > 0
+          ? ListView.builder(
+              itemCount: gameSession.games.length,
+              itemBuilder: (context, index) {
+                final game = gameSession.games[index];
+                return ListTile(
+                  title: Text(game.name),
+                  trailing: IconButton(
+                    onPressed: () =>
+                        gameSessionService.removeGameFromSession(game),
+                    icon: const Icon(Icons.delete),
+                  ),
+                  onTap: () => Navigator.of(context)
+                      .push(openBoardDetails(game.objectId)),
+                );
+              })
+          : const Center(
+              child: Text("No games added to the session yet"),
+            ),
     );
   }
 }
