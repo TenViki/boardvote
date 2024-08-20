@@ -47,7 +47,9 @@ class _GameSessionScreenState extends ConsumerState<GameSessionScreen> {
             SizedBox(height: 16),
             DateTimePickerInput(
                 onDateTimeSelected: (dateTime) {
-                  print(dateTime);
+                  setState(() {
+                    _selectedDateTime = dateTime;
+                  });
                 },
                 selectedDateTime: _selectedDateTime),
             SizedBox(height: 16),
