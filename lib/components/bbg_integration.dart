@@ -15,7 +15,7 @@ class BbgIntegration extends StatelessWidget {
       builder: (context, snapshot) {
         print(
             "${snapshot.connectionState} ${snapshot.hasData} ${snapshot.hasError} ${snapshot.error}");
-        if (!snapshot.hasData) return CircularProgressIndicator();
+        if (!snapshot.hasData) return const CircularProgressIndicator();
 
         // get data where user id is the same as the current user
         final userData = snapshot.data!.docs.firstWhereOrNull(
@@ -25,7 +25,7 @@ class BbgIntegration extends StatelessWidget {
 
         return BbgIntegrationForm(
           username: userData != null ? userData["username"] : null,
-          collectionId: userData != null ? userData.id : null,
+          collectionId: userData?.id,
         );
       },
     );
@@ -76,7 +76,7 @@ class _BbgIntegrationFormState extends ConsumerState<BbgIntegrationForm> {
             ),
           ),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         ElevatedButton(
           onPressed: () async {
             // save the username to the database
@@ -105,8 +105,8 @@ class _BbgIntegrationFormState extends ConsumerState<BbgIntegrationForm> {
             boardService.syncCollection(controller.text);
           },
           child: boardState is BoardsLoading
-              ? CircularProgressIndicator()
-              : Text("Save"),
+              ? const CircularProgressIndicator()
+              : const Text("Save"),
         ),
       ],
     );

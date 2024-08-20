@@ -38,7 +38,7 @@ class SessionTile extends StatelessWidget {
                   radius: 20,
                   backgroundImage: NetworkImage(session.publisherImage),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(child: Text(session.publisherName)),
 
                 // format date from timestamp
@@ -69,7 +69,7 @@ class SessionTile extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    contentPadding: EdgeInsets.only(left: 16),
+                    contentPadding: const EdgeInsets.only(left: 16),
                     title: Text(game.name),
                     trailing: GameCounter(
                         session: session,

@@ -12,7 +12,7 @@ class BoardGameList extends StatelessWidget {
 
     return ListView.builder(
       itemCount: boardGames.length,
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       itemBuilder: (context, index) {
         return BoardGameTile(boardGame: boardGames[index]);
       },

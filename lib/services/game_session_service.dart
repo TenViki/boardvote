@@ -8,6 +8,7 @@ part 'game_session_service.g.dart';
 
 @riverpod
 class GameSessionService extends _$GameSessionService {
+  @override
   BoardsLoaded build() => BoardsLoaded([]);
 
   addGameToSession(BoardGameLow game) {

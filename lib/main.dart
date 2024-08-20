@@ -21,7 +21,7 @@ void main() async {
     return true;
   };
 
-  runApp(ProviderScope(child: const MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -30,7 +30,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: RouterPage(),
+      home: const RouterPage(),
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

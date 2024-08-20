@@ -111,7 +111,7 @@ class FollowingScreen extends StatelessWidget {
                 final email = following[index];
                 return ListTile(
                   contentPadding:
-                      EdgeInsets.only(right: 0, left: 16, top: 8, bottom: 8),
+                      const EdgeInsets.only(right: 0, left: 16, top: 8, bottom: 8),
                   title: Text(email),
                   onTap: () {
                     // open the user's profile

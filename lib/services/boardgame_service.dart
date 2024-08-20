@@ -70,6 +70,7 @@ Future<BoardGame> fetchBoardgameData(Ref ref, String objectId) async {
 
 @riverpod
 class BoardGamesService extends _$BoardGamesService {
+  @override
   BoardsState build() => BoardsInitial();
 
   searchGames(String searchTerm) async {

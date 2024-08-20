@@ -37,7 +37,7 @@ class BoardGameTile extends StatelessWidget {
 }
 
 class BoardGameTileWrapper extends StatelessWidget {
-  const BoardGameTileWrapper({
+  const BoardGameTileWrapper({super.key, 
     required this.objectId,
     required this.closedChild,
   });

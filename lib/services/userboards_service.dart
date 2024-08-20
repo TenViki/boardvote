@@ -77,7 +77,7 @@ class BoardService extends _$BoardService {
   }
 
   Future<void> _syncCollection(String username) async {
-    var data;
+    String? data;
 
     for (;;) {
       print("Fetching collection for $username");
@@ -88,7 +88,7 @@ class BoardService extends _$BoardService {
       }
 
       // wait for 5 seconds before trying again
-      await Future.delayed(Duration(seconds: 20));
+      await Future.delayed(const Duration(seconds: 20));
     }
 
     final List<BoardGameLow> boardGames = [];

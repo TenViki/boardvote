@@ -13,7 +13,7 @@ class UserHeader extends StatelessWidget {
             ? CircleAvatar(
                 backgroundImage: NetworkImage(user.photoURL!),
               )
-            : Icon(Icons.person),
+            : const Icon(Icons.person),
         const SizedBox(width: 16),
         Expanded(
           child: Column(
@@ -25,7 +25,7 @@ class UserHeader extends StatelessWidget {
           ),
         ),
         IconButton(
-          icon: Icon(Icons.logout),
+          icon: const Icon(Icons.logout),
           onPressed: () => FirebaseAuth.instance.signOut(),
         ),
       ],

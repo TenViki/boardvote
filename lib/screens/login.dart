@@ -58,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                           width: 24,
                         ),
                         const SizedBox(width: 8),
-                        Text('Continue with Google'),
+                        const Text('Continue with Google'),
                       ],
                     ),
                   ),
