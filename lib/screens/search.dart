@@ -1,4 +1,4 @@
-import 'package:boardvote/screens/boardgame.dart';
+import 'package:boardvote/components/boardgame_tile.dart';
 import 'package:boardvote/services/boardgame_service.dart';
 import 'package:boardvote/services/game_session_service.dart';
 import 'package:boardvote/services/userboards_service.dart';
@@ -56,23 +56,26 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   final isGameInSession =
                       gameSessionService.isGameInSession(game.objectId);
 
-                  return ListTile(
-                    title: Text(game.name),
-                    trailing: IconButton(
-                      onPressed: () {
-                        if (isGameInSession) {
-                          gameSessionService.removeGameFromSession(game);
-                        } else {
-                          gameSessionService.addGameToSession(game);
-                        }
-                      },
-                      icon: isGameInSession
-                          ? const Icon(Icons.check)
-                          : const Icon(Icons.add),
+                  return BoardGameTileWrapper(
+                    objectId: game.objectId,
+                    closedChild: ListTile(
+                      title: Text(game.name),
+                      trailing: IconButton(
+                        onPressed: () {
+                          if (isGameInSession) {
+                            gameSessionService.removeGameFromSession(game);
+                          } else {
+                            gameSessionService.addGameToSession(game);
+                          }
+                        },
+                        icon: isGameInSession
+                            ? const Icon(Icons.check)
+                            : const Icon(Icons.add),
+                      ),
+                      // subtitle: Text(game.),
+                      // onTap: () => Navigator.of(context)
+                      //     .push(openBoardDetails(game.objectId)),
                     ),
-                    // subtitle: Text(game.),
-                    onTap: () => Navigator.of(context)
-                        .push(openBoardDetails(game.objectId)),
                   );
                 },
               ),

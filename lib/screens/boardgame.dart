@@ -1,3 +1,4 @@
+import 'package:boardvote/components/boardgame_tile.dart';
 import 'package:boardvote/models/boardgame.dart';
 import 'package:boardvote/services/boardgame_service.dart';
 import 'package:boardvote/services/game_session_service.dart';
@@ -114,12 +115,12 @@ class BoardgameScreen extends ConsumerWidget {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       final link = value.relatedLinks[index];
-                      return ListTile(
-                        title: Text(link.value),
-                        subtitle: Text(link.type),
-                        onTap: () {
-                          Navigator.of(context).push(openBoardDetails(link.id));
-                        },
+                      return BoardGameTileWrapper(
+                        objectId: link.id,
+                        closedChild: ListTile(
+                          title: Text(link.value),
+                          subtitle: Text(link.type),
+                        ),
                       );
                     },
                     childCount: value.relatedLinks.length,
