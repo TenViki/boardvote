@@ -19,11 +19,11 @@ class HomeScreen extends ConsumerWidget {
         AppBar(
           title: const Text("Boardvote"),
           actions: [
-            const _OpenContainerWrapper(
+            const OpenContainerAppbar(
               icon: Icon(Icons.gamepad),
               openedChild: GameSessionScreen(),
             ),
-            _OpenContainerWrapper(
+            OpenContainerAppbar(
               icon: const Icon(Icons.people),
               openedChild: FollowingScreen(),
             ),
@@ -57,8 +57,8 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-class _OpenContainerWrapper extends StatelessWidget {
-  const _OpenContainerWrapper({
+class OpenContainerAppbar extends StatelessWidget {
+  const OpenContainerAppbar({
     required this.icon,
     required this.openedChild,
   });
@@ -79,6 +79,7 @@ class _OpenContainerWrapper extends StatelessWidget {
       ),
       closedElevation: 0,
       closedColor: Colors.transparent,
+      transitionType: ContainerTransitionType.fadeThrough,
       closedBuilder: (context, openContainer) {
         return IconButton(
           onPressed: openContainer,

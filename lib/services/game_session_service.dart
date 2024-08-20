@@ -28,7 +28,7 @@ class GameSessionService extends _$GameSessionService {
     return state.games.any((g) => g.objectId == objectId);
   }
 
-  publishSession() {
+  publishSession(String name, String? notes, String location, DateTime? date) {
     final user = FirebaseAuth.instance.currentUser;
     // publish the session
     FirebaseFirestore.instance.collection("sessions").add({
@@ -37,6 +37,10 @@ class GameSessionService extends _$GameSessionService {
       "publisherEmail": user!.email,
       "publisherName": user.displayName,
       "publisherImage": user.photoURL,
+      "name": name,
+      "notes": notes,
+      "location": location,
+      "date": date?.millisecondsSinceEpoch,
     });
 
     clearSession();

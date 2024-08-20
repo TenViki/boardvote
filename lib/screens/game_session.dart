@@ -1,15 +1,87 @@
 import 'package:animations/animations.dart';
+import 'package:boardvote/components/date_picker.dart';
 import 'package:boardvote/screens/boardgame.dart';
 import 'package:boardvote/screens/search.dart';
 import 'package:boardvote/services/game_session_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GameSessionScreen extends ConsumerWidget {
+class GameSessionScreen extends ConsumerStatefulWidget {
   const GameSessionScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _GameSessionScreenState();
+}
+
+class _GameSessionScreenState extends ConsumerState<GameSessionScreen> {
+  DateTime _selectedDateTime = DateTime.now();
+  final _nameController = TextEditingController();
+  final _placeController = TextEditingController();
+  final _notesController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _placeController.dispose();
+    _notesController.dispose();
+    super.dispose();
+  }
+
+  void _editDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Edit Game Session"),
+        content: Column(
+          // form for editing date and time, place, name and notes
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                labelText: "Name",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            DateTimePickerInput(
+                onDateTimeSelected: (dateTime) {
+                  print(dateTime);
+                },
+                selectedDateTime: _selectedDateTime),
+            SizedBox(height: 16),
+            TextField(
+              controller: _placeController,
+              decoration: const InputDecoration(
+                labelText: "Place",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: _notesController,
+              textInputAction: TextInputAction.newline,
+              maxLines: 4,
+              decoration: const InputDecoration(
+                labelText: "Notes",
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("Save"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final gameSession = ref.watch(gameSessionServiceProvider);
     final gameSessionService = ref.read(gameSessionServiceProvider.notifier);
 
@@ -19,9 +91,16 @@ class GameSessionScreen extends ConsumerWidget {
         title: Text("Current Game Session"),
         actions: [
           IconButton(
+              onPressed: () => _editDialog(context), icon: Icon(Icons.edit)),
+          IconButton(
             tooltip: "Publish Game Session for your followers to join",
             onPressed: gameSession.games.isNotEmpty
-                ? () => gameSessionService.publishSession()
+                ? () => gameSessionService.publishSession(
+                      _nameController.text,
+                      _notesController.text,
+                      _placeController.text,
+                      _selectedDateTime,
+                    )
                 : null,
             icon: const Icon(Icons.published_with_changes),
           ),
